@@ -52,7 +52,7 @@ h1, h2, h3, h4, .btn, .nav-links a, .rnum { font-family: 'Montserrat', sans-seri
 
 /* GLASSMORPHISM NAV */
 .glass-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
-.nav-logo img { height: 45px; }
+.nav-logo img { height: 45px; width: auto; border-radius: 50%; mix-blend-mode: multiply; background: transparent; }
 .nav-links { display: flex; gap: 25px; list-style: none; }
 .nav-links a { color: var(--navy); text-decoration: none; font-size: 14px; font-weight: 700; text-transform: uppercase; position: relative; }
 .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: var(--gold); transition: 0.3s; }
@@ -160,4 +160,10 @@ footer { background: var(--navy); color: var(--white); padding: 80px 0 20px; bor
     .hero { padding: 120px 0 60px; }
     .grid-2 { grid-template-columns: 1fr; }
     .ai-widget { right: 20px; width: calc(100% - 40px); }
+}
+
+.popup-img, .ai-header img { 
+    border-radius: 50%; 
+    mix-blend-mode: multiply; 
+    background: transparent; 
 }
