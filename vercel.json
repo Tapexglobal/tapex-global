@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/uk", "destination": "/uk.html" },
+    { "source": "/australia", "destination": "/australia.html" },
+    { "source": "/canada", "destination": "/canada.html" },
+    { "source": "/germany", "destination": "/germany.html" },
+    { "source": "/careerhub", "destination": "/careerhub.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/privacy", "destination": "/privacy.html" }
+  ]
+}
