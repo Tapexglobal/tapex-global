@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UK Career Hub | TAPEX Global Services</title>
     <meta name="description" content="Verified UK Part-time, Student, and Sponsorship Jobs. TAPEX Global Services provides exclusive UK job market support for international students.">
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <nav class="glass-nav">
-        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX"></a>
+        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX" style="border-radius: 50%; mix-blend-mode: multiply;"></a>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/uk">Study in UK</a></li>
@@ -29,6 +30,15 @@
     </header>
 
     <section class="container bg-light-pattern">
+        
+        <div class="glass-panel p-20 mb-30" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; background:var(--navy); color:var(--white); border-radius: 12px;">
+            <div>
+                <h3 style="color:#D4AF37; margin-bottom:5px;"><i class="fas fa-file-word"></i> Official UK Standard CV Template</h3>
+                <p style="font-size:13px; color:#ccc;">ATS-friendly format accepted by UK Part-time Employers and Tier-2 Sponsors.</p>
+            </div>
+            <a href="https://docs.google.com/document/d/1mrcEpUeTS3-lVj8jlhTrlvtV1BDXOs7i/edit?usp=sharing" target="_blank" class="btn btn-gold mt-10" style="font-weight:bold;">Download CV Template</a>
+        </div>
+
         <div class="filter-box glass-panel mb-30 p-20 flex-gap overflow-x">
             <button class="btn btn-navy filter-btn active" onclick="filterUKJobs('all', this)">All UK Jobs</button>
             <button class="btn btn-outline filter-btn" onclick="filterUKJobs('retail', this)">Retail</button>
@@ -42,11 +52,9 @@
         </div>
 
         <div id="jobs-UK-container" class="dest-grid">
-            <!-- Jobs Injected Here via jobs.js -->
-        </div>
+            </div>
     </section>
 
-    <!-- Standard footer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="/js/jobs.js"></script>
     <script src="/js/main.js"></script>
