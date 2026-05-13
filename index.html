@@ -12,7 +12,8 @@
     <meta property="og:url" content="https://www.tapexglobalservices.com">
     <meta property="og:type" content="website">
     
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -23,7 +24,7 @@
 </head>
 <body>
     <nav class="glass-nav">
-        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX Global Services"></a>
+        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX" style="border-radius: 50%; mix-blend-mode: multiply; background: transparent;"></a>
         <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="main-nav">
             <li><a href="/" class="active">Home</a></li>
@@ -95,7 +96,6 @@
         </div>
     </section>
 
-    <!-- FREE PROFILE EVALUATOR -->
     <section id="evaluator" class="bg-light-pattern">
         <div class="container">
             <div class="text-center mb-30">
@@ -116,89 +116,69 @@
                     <div class="c-step" id="st4"><div class="c-sn">4</div><div class="c-sl">Finance</div></div>
                 </div>
 
-                <!-- STEP 1 -->
                 <div class="c-sec show" id="c-sec1">
                     <div class="c-card">
                         <div class="c-ch"><div class="c-ch-ico"><i class="fas fa-globe-americas"></i></div><div><div class="c-ch-title">Select Destination</div><div class="c-ch-sub">Where do you want to study?</div></div></div>
                         <div class="c-cb">
-                            <div class="c-fg">
-                                <div class="c-tg grid-2">
-                                    <button class="c-tb on" onclick="setCTg('country','UK',this)">🇬🇧 United Kingdom</button>
-                                    <button class="c-tb" onclick="setCTg('country','Australia',this)">🇦🇺 Australia</button>
-                                    <button class="c-tb" onclick="setCTg('country','Canada',this)">🇨🇦 Canada</button>
-                                    <button class="c-tb" onclick="setCTg('country','Germany',this)">🇩🇪 Germany</button>
-                                </div>
-                            </div>
+                            <div class="c-fg"><div class="c-tg grid-2">
+                                <button class="c-tb on" onclick="setCTg('country','UK',this)">🇬🇧 United Kingdom</button>
+                                <button class="c-tb" onclick="setCTg('country','Australia',this)">🇦🇺 Australia</button>
+                                <button class="c-tb" onclick="setCTg('country','Canada',this)">🇨🇦 Canada</button>
+                                <button class="c-tb" onclick="setCTg('country','Germany',this)">🇩🇪 Germany</button>
+                            </div></div>
                             <button class="btn btn-navy w-100" onclick="stepCEng()">Continue →</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- STEP 2 -->
                 <div class="c-sec" id="c-sec2">
                     <div class="c-card">
                         <div class="c-ch"><div class="c-ch-ico"><i class="fas fa-language"></i></div><div><div class="c-ch-title">English Proficiency</div><div class="c-ch-sub" id="c-eng-sub">UK accepts Inter marks!</div></div></div>
                         <div class="c-cb">
-                            <div class="c-fg" id="c-eng-type-toggle">
-                                <label>Do you have an IELTS/PTE/Duolingo Score?</label>
-                                <div class="c-tg">
-                                    <button class="c-tb on" id="c-btn-no-test" onclick="toggleCTest(false)">No, Use Inter Marks</button>
-                                    <button class="c-tb" id="c-btn-yes-test" onclick="toggleCTest(true)">Yes, I have a score</button>
-                                </div>
-                            </div>
+                            <div class="c-fg"><label>Do you have an IELTS/PTE/Duolingo Score?</label><div class="c-tg">
+                                <button class="c-tb on" id="c-btn-no-test" onclick="toggleCTest(false)">No, Use Inter Marks</button>
+                                <button class="c-tb" id="c-btn-yes-test" onclick="toggleCTest(true)">Yes, I have a score</button>
+                            </div></div>
                             <div id="c-div-inter">
-                                <div class="c-ib amber mb-20"><strong>💡 UK Advantage:</strong> IELTS is NOT mandatory for the UK. If your Inter English marks are 60/100+, many UK universities accept MOI letters.</div>
-                                <div class="c-fg"><label>2nd Year Inter English Marks (Out of 100) *</label><input type="number" id="c-inter2" placeholder="e.g. 65" min="0" max="100"/></div>
+                                <div class="c-ib amber mb-20"><strong>💡 UK Advantage:</strong> IELTS is NOT mandatory for the UK. If your Inter English marks are 60/100+, many universities accept MOI.</div>
+                                <div class="c-fg"><label>2nd Year Inter English Marks (Out of 100) *</label><input type="number" id="c-inter2" placeholder="e.g. 65"/></div>
                             </div>
                             <div id="c-div-test" style="display:none;">
-                                <div class="c-fg"><label>Select Test *</label><select id="c-test-type"><option value="ielts">IELTS Academic</option><option value="pte">PTE Academic</option><option value="duolingo">Duolingo</option></select></div>
-                                <div class="c-fg"><label>Overall Score *</label><input type="number" id="c-test-score" step="0.5" placeholder="e.g. 6.5 or 110"/><div class="c-hint" id="c-test-hint">Australia strictly requires IELTS 6.5 overall.</div></div>
+                                <div class="c-fg"><label>Overall Score *</label><input type="number" id="c-test-score" step="0.5" placeholder="e.g. 6.5"/></div>
                             </div>
                             <button class="btn btn-navy w-100" onclick="stepCProf()">Continue →</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- STEP 3 -->
                 <div class="c-sec" id="c-sec3">
                     <div class="c-card">
                         <div class="c-ch"><div class="c-ch-ico"><i class="fas fa-user-graduate"></i></div><div><div class="c-ch-title">Academic Profile</div><div class="c-ch-sub">Gaps & Qualifications</div></div></div>
                         <div class="c-cb">
-                            <div class="c-fg"><label>Highest Qualification *</label>
-                                <select id="c-qual">
-                                    <option value="inter">12th / Intermediate</option>
-                                    <option value="degree">Bachelor's Degree</option>
-                                    <option value="pg">Master's Degree</option>
-                                </select>
-                            </div>
-                            <div class="c-fg"><label>Gap Years Since Last Study</label>
-                                <div class="c-tg">
-                                    <button class="c-tb on" onclick="setCTg('gap',0,this)">No Gap</button>
-                                    <button class="c-tb" onclick="setCTg('gap',1,this)">1 Year</button>
-                                    <button class="c-tb" onclick="setCTg('gap',3,this)">2-3 Years</button>
-                                    <button class="c-tb" onclick="setCTg('gap',5,this)">4+ Years</button>
-                                </div>
-                                <div class="c-ib blue mt-10"><strong>Note:</strong> UK accepts study gaps easily! TAPEX writes strong gap explanation SOPs.</div>
-                            </div>
+                            <div class="c-fg"><label>Highest Qualification *</label><select id="c-qual"><option value="inter">12th / Intermediate</option><option value="degree">Bachelor's Degree</option><option value="pg">Master's Degree</option></select></div>
+                            <div class="c-fg"><label>Gap Years Since Last Study</label><div class="c-tg">
+                                <button class="c-tb on" onclick="setCTg('gap',0,this)">No Gap</button>
+                                <button class="c-tb" onclick="setCTg('gap',1,this)">1 Year</button>
+                                <button class="c-tb" onclick="setCTg('gap',3,this)">2-3 Years</button>
+                                <button class="c-tb" onclick="setCTg('gap',5,this)">4+ Years</button>
+                            </div></div>
                             <button class="btn btn-navy w-100" onclick="stepCFin()">Continue →</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- STEP 4 -->
                 <div class="c-sec" id="c-sec4">
                     <div class="c-card">
-                        <div class="c-ch"><div class="c-ch-ico"><i class="fas fa-coins"></i></div><div><div class="c-ch-title">Financial Readiness</div><div class="c-ch-sub">100% Loan Assistance Provided</div></div></div>
+                        <div class="c-ch"><div class="c-ch-ico"><i class="fas fa-coins"></i></div><div><div class="c-ch-title">Financial Readiness</div><div class="c-ch-sub">100% Loan Assistance</div></div></div>
                         <div class="c-cb">
-                            <div class="c-ib green mb-20"><strong>✅ No Funds? No Worries.</strong> We handle SBI, HDFC Credila, Avanse, ICICI and Auxilo documentation.</div>
-                            <div class="c-fg"><label>Approximate Funds Available (₹ Lakhs)</label><input type="number" id="c-bank" placeholder="e.g. 5" min="0" step="1"/></div>
+                            <div class="c-ib green mb-20"><strong>✅ No Funds? No Worries.</strong> We handle SBI, HDFC Credila, and private loan documentation.</div>
+                            <div class="c-fg"><label>Approximate Funds Available (₹ Lakhs)</label><input type="number" id="c-bank" placeholder="e.g. 5"/></div>
                             <div class="c-fg"><label>Do you need an Education Loan?</label><div class="c-tg"><button class="c-tb on" onclick="setCTg('loan','yes',this)">Yes, Help Me</button><button class="c-tb" onclick="setCTg('loan','no',this)">No, Self-Funded</button></div></div>
                             <button class="btn btn-gold w-100" onclick="calcCScore()">🎯 Show My Profile Score</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- RESULT -->
                 <div class="c-sec" id="c-sec-result">
                     <div class="c-res-hero">
                         <div class="c-res-label">Your Global Eligibility Score</div>
@@ -207,36 +187,35 @@
                             <div class="c-ring-num"><span class="rnum" id="c-rnum">0</span><span class="text-gold" style="font-size:20px;font-weight:800;">%</span></div>
                         </div>
                         <div class="res-title">Strong Profile!</div>
-                        <div class="res-desc">TAPEX will review your profile personally and provide a guaranteed study pathway.</div>
-                        <div id="c-issues"></div>
                     </div>
                     <div class="glass-panel text-center p-30">
                         <h3 class="text-navy mb-10">Get Your Free Personalised Plan</h3>
-                        <p class="text-muted mb-20 text-sm">Our expert reviews your exact profile and provides a 100% guaranteed pathway within 24 hours.</p>
-                        <div class="c-fg text-left"><label>Your Name *</label><input type="text" id="c-name" placeholder="Enter your full name"/></div>
-                        <div class="c-fg text-left"><label>WhatsApp Number *</label><div class="flex-gap"><input value="+91" readonly class="prefix-input"/><input type="tel" id="c-phone" placeholder="9876543210" maxlength="10" class="flex-1"/></div></div>
-                        <button class="btn btn-green w-100 mb-10" onclick="submitCWhatsApp()"><i class="fab fa-whatsapp"></i> Talk to UK Mentor Directly</button>
+                        <div class="c-fg text-left"><label>Your Name *</label><input type="text" id="c-name" placeholder="Full Name"/></div>
+                        <div class="c-fg text-left"><label>WhatsApp Number *</label><div class="flex-gap"><input value="+91" readonly class="prefix-input"/><input type="tel" id="c-phone" placeholder="Mobile" class="flex-1"/></div></div>
+                        <button class="btn btn-green w-100 mb-10" onclick="submitCWhatsApp()"><i class="fab fa-whatsapp"></i> Get My Guaranteed Success Plan</button>
                         <div class="text-muted text-xs mb-10">OR</div>
-                        <a href="https://forms.gle/GyJEoy8KbLDTE36q7" target="_blank" class="btn btn-outline w-100"><i class="fas fa-file-alt"></i> Fill Official Form</a>
+                        <a href="https://forms.gle/GyJEoy8KbLDTE36q7" target="_blank" class="btn btn-outline w-100"><i class="fas fa-file-alt"></i> Open Priority Assessment Form</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container footer-grid">
             <div>
-                <img src="logo.jpg" alt="TAPEX Global Services" class="footer-logo">
+                <img src="logo.jpg" alt="TAPEX" class="footer-logo" style="border-radius: 50%; mix-blend-mode: multiply; height: 50px; background: white; padding: 2px;">
                 <div class="footer-tagline">Your Gateway to Global Education.</div>
-                <p class="footer-desc">Study abroad consultancy serving Telangana, AP, and India with an executive UK presence. Guiding dynamic academic success pipelines.</p>
+                <p class="footer-desc">Study abroad consultancy serving Telangana, AP, and India with an executive UK presence.</p>
             </div>
             <div>
                 <h4 class="footer-heading">Contact Channels</h4>
                 <ul class="footer-links">
                     <li><i class="fas fa-envelope"></i> <a href="mailto:info@tapexglobalservices.com">info@tapexglobalservices.com</a></li>
-                    <li><i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/916301516052" target="_blank">+91 63015 16052 (India HQ)</a></li>
+                  
+                  <li><i class="fas fa-phone-alt text-gold"></i> <a href="tel:+916309326696">+91 63093 26696 (Admissions IND)</a></li>
+                  
+<li><i class="fas fa-phone-alt text-gold"></i> <a href="tel:+916301516052">+91 6301516052 (HQ IND)</a></li>
                     <li><i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/447386865322" target="_blank">Contact UK Office Directly</a></li>
                 </ul>
             </div>
@@ -244,51 +223,46 @@
                 <h4 class="footer-heading">Quick Links</h4>
                 <ul class="footer-links">
                     <li><i class="fas fa-map-marker-alt"></i> UK Hub: Leicester, LE1</li>
-                    <li><i class="fas fa-map-marker-alt"></i> India HQ: Warangal, Telangana</li>
+                    <li><i class="fas fa-map-marker-alt"></i> India HQ: Warangal</li>
                     <li><i class="fas fa-link"></i> <a href="/careerhub">UK Career Hub</a></li>
                     <li><i class="fas fa-link"></i> <a href="/privacy">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom container">
-            <p>Serving: Hyderabad | Warangal | Hanamkonda | Karimnagar | Nizamabad | Khammam | Nalgonda</p>
+            <p>Serving: Hyderabad | Warangal | Hanamkonda | Karimnagar | Nizamabad | Khammam</p>
             <p>&copy; 2026 TAPEX Global Services. All Rights Reserved. | <a href="/">www.tapexglobalservices.com</a></p>
         </div>
     </footer>
 
-    <!-- POPUPS & AI -->
-    <a href="https://wa.me/447386865322" class="fab-wa" target="_blank" title="Chat with UK Mentor"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/447386865322" class="fab-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- LEAD POPUP -->
     <div id="leadPopup" class="popup-overlay">
-        <div class="popup-box glass-panel">
+        <div class="popup-box glass-panel text-center">
             <span class="popup-close" onclick="closePopup()">&times;</span>
-            <img src="logo.jpg" alt="TAPEX" class="popup-img">
-            <h2 class="text-navy mb-10">Get Free Admission Guidance</h2>
-            <p class="text-muted text-sm mb-20">Enter your details for a free profile assessment and 100% education loan guidance.</p>
-            <input type="text" id="popup-name" placeholder="Your Full Name" class="form-input mb-10">
-            <input type="tel" id="popup-phone" placeholder="10-Digit Mobile Number" maxlength="10" class="form-input mb-20">
-            <button class="btn btn-gold w-100" onclick="submitPopup()">Get Free Consultation</button>
+            <img src="logo.jpg" alt="TAPEX" class="popup-img" style="border-radius: 50%; mix-blend-mode: multiply; width: 60px; height: 60px; margin-bottom: 15px;">
+            <h2 class="text-navy mb-10">Free Admission Guidance</h2>
+            <p class="text-muted text-sm mb-20">Get a free assessment and 100% education loan guidance within 2 hours.</p>
+            <a href="https://forms.gle/GyJEoy8KbLDTE36q7" target="_blank" class="btn btn-gold w-100 mb-10" style="display:block; padding:12px; font-weight:bold;"><i class="fas fa-file-alt"></i> Open Assessment Form</a>
+            <a href="https://wa.me/447386865322" target="_blank" class="btn btn-green w-100" style="display:block; padding:12px;"><i class="fab fa-whatsapp"></i> Claim Free Consultation</a>
         </div>
     </div>
 
-    <!-- GEMINI AI WIDGET -->
     <div id="ai-chat-widget" class="ai-widget">
         <div class="ai-header">
-            <span><i class="fas fa-robot text-gold"></i> TAPEX AI Assistant</span>
+            <span><img src="logo.jpg" style="border-radius:50%; height:25px; width:25px; vertical-align:middle; margin-right:8px; mix-blend-mode:multiply;"> TAPEX AI Assistant</span>
             <i class="fas fa-times" style="cursor:pointer;" onclick="toggleAI()"></i>
         </div>
         <div id="ai-body" class="ai-body">
-            <div class="ai-msg bot">Hello! I'm the TAPEX AI. How can I help you with your study abroad plans or UK Jobs today?</div>
+            <div class="ai-msg bot">Hello! I'm the TAPEX AI. Ask me anything about UK visas or Jobs.</div>
         </div>
         <div class="ai-input-area">
-            <input type="text" id="ai-input" placeholder="Ask about UK visas, jobs..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+            <input type="text" id="ai-input" placeholder="Ask AI..." onkeypress="if(event.key==='Enter') sendAIMessage()">
             <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
     <div class="ai-fab" onclick="toggleAI()"><i class="fas fa-sparkles"></i></div>
 
-    <!-- SCRIPTS -->
     <script src="/js/main.js"></script>
     <script src="/js/ai-assistant.js"></script>
 </body>
