@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study in Australia | TAPEX Global Services</title>
+    <meta name="description" content="Study in Australia with TAPEX Global Services. Get your Student Visa, 4-Year Post Study Work Rights, and PR pathways.">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="glass-nav">
+        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX"></a>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="main-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/uk">Study in UK</a></li>
+            <li><a href="/australia" class="active">Australia</a></li>
+            <li><a href="/canada">Canada</a></li>
+            <li><a href="/germany">Germany</a></li>
+            <li><a href="/careerhub">UK Career Hub</a></li>
+        </ul>
+        <a href="/#evaluator" class="btn btn-gold nav-cta">Check Eligibility</a>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/" class="mm-link">Home</a>
+        <a href="/uk" class="mm-link">Study in UK</a>
+        <a href="/careerhub" class="mm-link">UK Career Hub</a>
+        <a href="/about" class="mm-link">About Us</a>
+    </div>
+
+    <!-- Note: Make sure you create an 'images' folder and add 'sydney.jpg' or remove the url() to fallback to a navy gradient -->
+    <header class="hero glass-hero" style="background: linear-gradient(rgba(2,11,45,0.85), rgba(2,11,45,0.95)), url('/images/sydney.jpg') center/cover;">
+        <div class="container text-center">
+            <h1 class="hero-title">Study in <span class="text-gold">Australia 🇦🇺</span></h1>
+            <p class="hero-subtitle">World-class Group of Eight (Go8) Universities, up to 4 Years of PSW, and clear Permanent Residency (PR) pathways.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/447386865322" class="btn btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Instant Australia Guidance</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title text-center">Why Australia with TAPEX?</h2>
+        <div class="dest-grid mt-30">
+            <div class="glass-card text-center p-30">
+                <i class="fas fa-graduation-cap text-gold fa-3x mb-15"></i>
+                <h3>High Ranking Unis</h3>
+                <p class="text-muted text-sm mt-10">Access to top-tier universities worldwide with excellent research facilities and global recognition.</p>
+            </div>
+            <div class="glass-card text-center p-30">
+                <i class="fas fa-clock text-gold fa-3x mb-15"></i>
+                <h3>4-Year PSW Rights</h3>
+                <p class="text-muted text-sm mt-10">Extended Post-Study Work rights (Subclass 485) allowing you to build a long-term career in Australia.</p>
+            </div>
+            <div class="glass-card text-center p-30">
+                <i class="fas fa-map-marker-alt text-gold fa-3x mb-15"></i>
+                <h3>PR Opportunities</h3>
+                <p class="text-muted text-sm mt-10">Clear points-based system for PR, especially in regional areas like Perth, Adelaide, and Brisbane.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <img src="logo.jpg" alt="TAPEX Global Services" class="footer-logo">
+                <div class="footer-tagline">Your Gateway to Global Education.</div>
+                <p class="footer-desc">Study abroad consultancy serving Telangana, AP, and India with an executive UK presence.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Contact Channels</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:info@tapexglobalservices.com">info@tapexglobalservices.com</a></li>
+                    <li><i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/916301516052" target="_blank">+91 63015 16052 (India HQ)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-link"></i> <a href="/careerhub">UK Career Hub</a></li>
+                    <li><i class="fas fa-link"></i> <a href="/about">About Us</a></li>
+                    <li><i class="fas fa-link"></i> <a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 TAPEX Global Services. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- POPUPS & AI -->
+    <a href="https://wa.me/447386865322" class="fab-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    
+    <div id="ai-chat-widget" class="ai-widget">
+        <div class="ai-header">
+            <span><i class="fas fa-robot text-gold"></i> TAPEX AI</span>
+            <i class="fas fa-times" style="cursor:pointer;" onclick="toggleAI()"></i>
+        </div>
+        <div id="ai-body" class="ai-body"><div class="ai-msg bot">Hello! Ask me about studying in Australia or the UK.</div></div>
+        <div class="ai-input-area">
+            <input type="text" id="ai-input" placeholder="Type here..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+            <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <div class="ai-fab" onclick="toggleAI()"><i class="fas fa-sparkles"></i></div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/ai-assistant.js"></script>
+</body>
+</html>

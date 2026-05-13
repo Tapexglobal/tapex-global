@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UK Career Hub | TAPEX Global Services</title>
+    <meta name="description" content="Verified UK Part-time, Student, and Sponsorship Jobs. TAPEX Global Services provides exclusive UK job market support for international students.">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="glass-nav">
+        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX"></a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/uk">Study in UK</a></li>
+            <li><a href="/careerhub" class="active">UK Career Hub</a></li>
+            <li><a href="/about">About Us</a></li>
+        </ul>
+        <a href="https://wa.me/447386865322" target="_blank" class="btn btn-gold nav-cta">Talk to UK Director</a>
+    </nav>
+
+    <header class="hero glass-hero bg-career">
+        <div class="container text-center">
+            <h1 class="hero-title">UK Career Hub <span class="text-gold">🇬🇧</span></h1>
+            <p class="hero-subtitle">Exclusive to TAPEX Students. Verified part-time, graduate, and sponsorship jobs across the United Kingdom. Auto-updated via Reed.co.uk API.</p>
+        </div>
+    </header>
+
+    <section class="container bg-light-pattern">
+        <div class="filter-box glass-panel mb-30 p-20 flex-gap overflow-x">
+            <button class="btn btn-navy filter-btn active" onclick="filterUKJobs('all', this)">All UK Jobs</button>
+            <button class="btn btn-outline filter-btn" onclick="filterUKJobs('retail', this)">Retail</button>
+            <button class="btn btn-outline filter-btn" onclick="filterUKJobs('warehouse', this)">Warehouses</button>
+            <button class="btn btn-outline filter-btn" onclick="filterUKJobs('hospitality', this)">Hospitality</button>
+            <button class="btn btn-outline filter-btn" onclick="filterUKJobs('graduate', this)">Sponsorship/Grad</button>
+        </div>
+
+        <div class="text-center mb-20">
+            <h2 id="job-count-display" class="text-navy">Loading Live UK Opportunities...</h2>
+        </div>
+
+        <div id="jobs-UK-container" class="dest-grid">
+            <!-- Jobs Injected Here via jobs.js -->
+        </div>
+    </section>
+
+    <!-- Standard footer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="/js/jobs.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study in Germany | TAPEX Global Services</title>
+    <meta name="description" content="Study in Germany with TAPEX Global Services. Free tuition in public universities and 18-month Job Seeker Visa.">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="glass-nav">
+        <a href="/" class="nav-logo"><img src="logo.jpg" alt="TAPEX"></a>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="main-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/uk">Study in UK</a></li>
+            <li><a href="/australia">Australia</a></li>
+            <li><a href="/canada">Canada</a></li>
+            <li><a href="/germany" class="active">Germany</a></li>
+            <li><a href="/careerhub">UK Career Hub</a></li>
+        </ul>
+        <a href="/#evaluator" class="btn btn-gold nav-cta">Check Eligibility</a>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/" class="mm-link">Home</a>
+        <a href="/uk" class="mm-link">Study in UK</a>
+        <a href="/careerhub" class="mm-link">UK Career Hub</a>
+    </div>
+
+    <header class="hero glass-hero" style="background: linear-gradient(rgba(2,11,45,0.85), rgba(2,11,45,0.95)), url('/images/berlin.jpg') center/cover;">
+        <div class="container text-center">
+            <h1 class="hero-title">Study in <span class="text-gold">Germany 🇩🇪</span></h1>
+            <p class="hero-subtitle">Zero Tuition Fees in Public Universities and a powerful 18-Month Job Seeker Visa after graduation.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/447386865322" class="btn btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Germany Mentor</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title text-center">Why Germany with TAPEX?</h2>
+        <div class="dest-grid mt-30">
+            <div class="glass-card text-center p-30">
+                <i class="fas fa-euro-sign text-gold fa-3x mb-15"></i>
+                <h3>Zero Tuition Fees</h3>
+                <p class="text-muted text-sm mt-10">Study at top-ranked Public Universities in Germany for free or very low costs.</p>
+            </div>
+            <div class="glass-card text-center p-30">
+                <i class="fas fa-search-dollar text-gold fa-3x mb-15"></i>
+                <h3>18-Month Job Seek</h3>
+                <p class="text-muted text-sm mt-10">Stay back in Germany for up to 18 months to find a high-paying job in Europe's strongest economy.</p>
+            </div>
+            <div class="glass-card text-center p-30">
+                <i class="fas fa-industry text-gold fa-3x mb-15"></i>
+                <h3>Industry Leader</h3>
+                <p class="text-muted text-sm mt-10">Perfect destination for Mechanical, Automotive, and IT students with world-class tech hubs.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <img src="logo.jpg" alt="TAPEX Global Services" class="footer-logo">
+                <div class="footer-tagline">Your Gateway to Global Education.</div>
+                <p class="footer-desc">Study abroad consultancy serving Telangana, AP, and India with an executive UK presence.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Contact Channels</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:info@tapexglobalservices.com">info@tapexglobalservices.com</a></li>
+                    <li><i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/916301516052" target="_blank">+91 63015 16052 (India HQ)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-link"></i> <a href="/careerhub">UK Career Hub</a></li>
+                    <li><i class="fas fa-link"></i> <a href="/about">About Us</a></li>
+                    <li><i class="fas fa-link"></i> <a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 TAPEX Global Services. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/447386865322" class="fab-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div id="ai-chat-widget" class="ai-widget">
+        <div class="ai-header"><span><i class="fas fa-robot text-gold"></i> TAPEX AI</span><i class="fas fa-times" onclick="toggleAI()"></i></div>
+        <div id="ai-body" class="ai-body"><div class="ai-msg bot">Hello! Ask me about studying in Germany or the UK.</div></div>
+        <div class="ai-input-area"><input type="text" id="ai-input" placeholder="Type here..." onkeypress="if(event.key==='Enter') sendAIMessage()"><button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button></div>
+    </div>
+    <div class="ai-fab" onclick="toggleAI()"><i class="fas fa-sparkles"></i></div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/ai-assistant.js"></script>
+</body>
+</html>
