@@ -1,69 +1,101 @@
-const GEMINI_API_KEY = "AIzaSyAHXWnp2uzT0wIP0riKH9rH1gF5Y5xxHOU"; 
+/**
+ * GEMINI API INTEGRATION
+ * Direct API Call with robust error handling and Lead Generation Logic.
+ */
+const GEMINI_API_KEY = "AIzaSyAHXWnp2uzT0wIP0riKH9rH1gF5Y5xxHOU";
+let messageCount = 0;
 
-// Simplified Prompt for maximum compatibility
-const SYSTEM_PROMPT = "You are TAPEX AI, a study abroad expert. Focus on UK, Australia, Canada, Germany. Mention Uday Kiran (Leicester, UK) as Lead Mentor. Keep it very short.";
+const SYSTEM_PROMPT = `
+You are the AI Assistant for 'TAPEX Global Services', an elite study abroad consultancy. 
+Focus: UK (Main Focus), Australia, Canada, Germany.
+UK Advantage: No IELTS needed if Inter 2nd year English marks are 60/100+. 18-month post-study work visa. 100% loan assistance available.
+Mentor Location: Lead Mentor Uday Kiran is physically based in Leicester, UK.
+We have a UK Career Hub for enrolled students to find verified part-time jobs and graduate sponsorship jobs.
+Always be friendly, premium, fast, persuasive but helpful.
+NEVER say "Due to high traffic".
+Keep answers to 2 short paragraphs max.
+`;
+
+let chatContext = [
+    { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
+    { role: "model", parts: [{ text: "Understood. I am ready to assist TAPEX students." }] }
+];
 
 function toggleAI() {
-    const widget = document.getElementById('ai-chat-widget');
-    if (widget) widget.style.display = widget.style.display === 'flex' ? 'none' : 'flex';
-}
-
-async function sendAIMessage() {
-    const inputEl = document.getElementById('ai-input');
-    const msg = inputEl.value.trim();
-    if(!msg) return;
-
-    appendMessage('user', msg);
-    inputEl.value = '';
-    const typingId = appendMessage('bot', 'Connecting to server...');
-
-    try {
-        // v1 is more stable than v1beta for front-end calls
-        const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-        
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{ text: `${SYSTEM_PROMPT}\n\nQuestion: ${msg}` }]
-                }]
-            })
-        });
-        
-        const data = await response.json();
-
-        // If Google returns an error, show it in Console (F12)
-        if (data.error) {
-            console.error("GOOGLE API ERROR:", data.error);
-            throw new Error(data.error.message);
-        }
-
-        const botReply = data.candidates[0].content.parts[0].text;
-        document.getElementById(typingId).innerText = botReply;
-
-    } catch(err) {
-        console.error("FRONTEND FETCH ERROR:", err);
-        // Fallback message
-        document.getElementById(typingId).innerHTML = `
-            <div style="background:#fff3cd; color:#856404; padding:10px; border-radius:8px; border-left:4px solid #ffeba2; font-size:12px;">
-                <b>System Offline:</b> September intake traffic is high. Please connect with our UK Director directly.<br><br>
-                <a href="https://wa.me/447386865322" target="_blank" style="background:#25D366; color:white; padding:8px 12px; border-radius:4px; text-decoration:none; display:inline-block; font-weight:bold; font-size:11px;">
-                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                </a>
-            </div>`;
+    const el = document.getElementById('ai-widget');
+    if(el) {
+        el.style.display = el.style.display === 'none' || el.style.display === '' ? 'flex' : 'none';
     }
 }
 
-function appendMessage(sender, text) {
+function fillAIInput(text) {
+    const inputEl = document.getElementById('ai-input-field');
+    const sugEl = document.getElementById('ai-suggestions');
+    if (inputEl) inputEl.value = text;
+    sendAIMessage();
+    if (sugEl) sugEl.style.display = 'none';
+}
+
+function handleAIKey(e) {
+    if(e.key === 'Enter') sendAIMessage();
+}
+
+async function sendAIMessage() {
+    const input = document.getElementById('ai-input-field');
+    if (!input) return;
+    
+    const text = input.value.trim();
+    if(!text) return;
+
+    appendMsg('user', text);
+    input.value = '';
+    messageCount++;
+    
+    // Capture Lead after 3 messages
+    if(messageCount >= 3) {
+        appendMsg('bot', 'To give you the best personalized guidance and exact university matches, could you please connect with our UK Director directly on WhatsApp? <br><br><a href="https://wa.me/447386865322" target="_blank" style="color:var(--navy); font-weight:bold; text-decoration:underline;">Click here to chat instantly.</a>');
+        return;
+    }
+
+    const typingId = appendMsg('bot', '<i class="fas fa-ellipsis-h fa-fade"></i>');
+
+    try {
+        chatContext.push({ role: "user", parts: [{ text: text }] });
+        
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: chatContext })
+        });
+        
+        const data = await response.json();
+        
+        if(data.error) throw new Error(data.error.message);
+        
+        const reply = data.candidates[0].content.parts[0].text;
+        chatContext.push({ role: "model", parts: [{ text: reply }] });
+        
+        const typingEl = document.getElementById(typingId);
+        if (typingEl) typingEl.innerHTML = reply.replace(/\n/g, '<br>');
+
+    } catch (error) {
+        const typingEl = document.getElementById(typingId);
+        if (typingEl) {
+            typingEl.innerHTML = "I'm temporarily unavailable. Please try again in a few seconds or connect with our UK mentor on WhatsApp at <a href='https://wa.me/447386865322' target='_blank' style='color:var(--navy); font-weight:bold;'>+447386865322</a>.";
+        }
+    }
+}
+
+function appendMsg(sender, text) {
     const body = document.getElementById('ai-body');
-    if (!body) return '';
-    const msgDiv = document.createElement('div');
+    if (!body) return null;
+    
+    const div = document.createElement('div');
     const id = 'msg-' + Date.now();
-    msgDiv.id = id;
-    msgDiv.className = `ai-msg ${sender}`;
-    msgDiv.innerText = text;
-    body.appendChild(msgDiv);
+    div.id = id;
+    div.className = `ai-msg ${sender}`;
+    div.innerHTML = text;
+    body.appendChild(div);
     body.scrollTop = body.scrollHeight;
     return id;
 }
