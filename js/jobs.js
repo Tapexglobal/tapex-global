@@ -1,193 +1,110 @@
-const APPS_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw0qgbjVNKyd2kF3kSVfQN6yD8KTFVYra29Rm5vDv4rG4RFW6IlPSYPdWXeHv0J0lfs/exec";
-
-let ukJobs = [];
+/**
+ * LIVE UK JOBS ENGINE
+ * Fast loading, Skeletons, Caching, Filtering.
+ */
+const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw0qgbjVNKyd2kF3kSVfQN6yD8KTFVYra29Rm5vDv4rG4RFW6IlPSYPdWXeHv0J0lfs/exec';
+let globalJobs = [];
+const CACHE_KEY = 'tapex_jobs_cache';
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('jobs-UK-container')) {
-        loadUKJobs();
+    if(document.getElementById('jobs-container')) {
+        loadJobs();
     }
 });
 
-async function loadUKJobs() {
+async function loadJobs() {
+    const container = document.getElementById('jobs-container');
+    if (!container) return;
 
-    const container = document.getElementById('jobs-UK-container');
-
-    container.innerHTML = `
-        <div class="text-center w-100 p-30">
-            <i class="fas fa-spinner fa-spin fa-2x text-gold"></i>
-            <p class="mt-15 text-navy">
-                Loading Live UK Jobs...
-            </p>
-        </div>
-    `;
+    // Retrieve from cache if exists for instant load
+    const cachedData = localStorage.getItem(CACHE_KEY);
+    const cacheTime = localStorage.getItem('tapex_jobs_time');
+    
+    if (cachedData && cacheTime && (Date.now() - cacheTime < 1800000)) {
+        globalJobs = JSON.parse(cachedData);
+        renderJobs('all');
+        const countDisplay = document.getElementById('job-count-display');
+        if (countDisplay) countDisplay.innerHTML += ' <span style="font-size:12px; color:var(--green);">(Live Syncing...)</span>';
+    } else {
+        container.innerHTML = Array(6).fill(`
+            <div class="job-card">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text" style="width:50%"></div>
+            </div>`).join('');
+    }
 
     try {
-
-        const response = await fetch(APPS_SCRIPT_WEB_APP_URL);
-
-        const data = await response.json();
-
-        console.log(data);
-
-        if (!data.jobs || data.jobs.length === 0) {
-
-            container.innerHTML = `
-                <p class="text-center w-100">
-                    No jobs found right now.
-                </p>
-            `;
-
-            return;
+        const res = await fetch(APPS_SCRIPT_WEB_APP_URL);
+        const data = await res.json();
+        
+        if (data && data.jobs && data.jobs.length > 0) {
+            globalJobs = data.jobs;
+            localStorage.setItem(CACHE_KEY, JSON.stringify(globalJobs));
+            localStorage.setItem('tapex_jobs_time', Date.now());
+            renderJobs('all');
+        } else if (globalJobs.length === 0) {
+            container.innerHTML = '<p class="text-center w-100">No jobs match this category right now. Check back later.</p>';
         }
-
-        ukJobs = data.jobs;
-
-        renderUKJobs('all');
-
-    } catch (error) {
-
-        console.error(error);
-
-        container.innerHTML = `
-            <p class="text-center w-100 text-red">
-                Failed to load UK jobs.
-            </p>
-        `;
+    } catch (err) {
+        console.error("Job Fetch Error: ", err);
+        if (globalJobs.length === 0) {
+            container.innerHTML = '<p class="text-center w-100 text-muted">Unable to load live jobs. Please check your internet connection.</p>';
+        }
     }
 }
 
-window.filterUKJobs = function(sector, el) {
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('btn-navy');
-        btn.classList.add('btn-outline');
+window.filterJobs = function(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('btn-navy');
+        b.classList.add('btn-outline-navy');
     });
-
-    if (el) {
-        el.classList.remove('btn-outline');
-        el.classList.add('btn-navy');
+    if (btn) {
+        btn.classList.remove('btn-outline-navy');
+        btn.classList.add('btn-navy');
     }
+    renderJobs(category);
+}
 
-    renderUKJobs(sector);
-};
-
-function renderUKJobs(sector) {
-
-    const container = document.getElementById('jobs-UK-container');
+function renderJobs(category) {
+    const container = document.getElementById('jobs-container');
+    const countDisplay = document.getElementById('job-count-display');
+    if (!container) return;
 
     let html = '';
-
     let count = 0;
 
-    ukJobs.forEach(job => {
+    globalJobs.forEach(job => {
+        const jobCat = String(job.Category || 'Part-Time').toLowerCase();
+        const searchPool = `${String(job.JobTitle)} ${jobCat} ${String(job.EmployerName)}`.toLowerCase();
+        
+        let show = false;
+        if(category === 'all') show = true;
+        else if(category === 'part-time' && (jobCat.includes('part') || searchPool.includes('assistant') || searchPool.includes('crew'))) show = true;
+        else if(category === 'sponsorship' && (searchPool.includes('sponsor') || searchPool.includes('graduate') || searchPool.includes('professional'))) show = true;
+        else if(category === 'warehouse' && (searchPool.includes('warehouse') || searchPool.includes('packer') || searchPool.includes('logistics'))) show = true;
 
-        const pool = `
-            ${job.JobTitle}
-            ${job.Category}
-            ${job.EmployerName}
-        `.toLowerCase();
-
-        let match = sector === 'all';
-
-        if (sector === 'retail' && pool.includes('retail')) {
-            match = true;
-        }
-
-        if (sector === 'warehouse' && pool.includes('warehouse')) {
-            match = true;
-        }
-
-        if (sector === 'hospitality' && (
-            pool.includes('hospitality') ||
-            pool.includes('barista') ||
-            pool.includes('cafe') ||
-            pool.includes('restaurant')
-        )) {
-            match = true;
-        }
-
-        if (sector === 'graduate' && (
-            pool.includes('graduate') ||
-            pool.includes('sponsorship')
-        )) {
-            match = true;
-        }
-
-        if (match) {
-
+        if(show) {
             count++;
-
+            const salary = job.MinimumSalary && job.MinimumSalary !== 'Competitive' ? `${job.MinimumSalary} - ${job.MaximumSalary}` : 'Competitive Pay';
+            const sourceBadge = job.Source ? `<span class="job-badge">${job.Source}</span>` : `<span class="job-badge">Verified</span>`;
+            
             html += `
-                <div class="glass-card">
-
-                    <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
-
-                        <strong class="text-muted text-sm">
-                            ${job.EmployerName || 'Employer'}
-                        </strong>
-
-                        <span style="
-                            background:#e8f5e9;
-                            color:#1b5e20;
-                            padding:4px 8px;
-                            border-radius:4px;
-                            font-size:11px;
-                            font-weight:800;
-                        ">
-                            ${job.Category || 'Verified'}
-                        </span>
-
-                    </div>
-
-                    <h3 style="
-                        font-size:18px;
-                        margin-bottom:10px;
-                        color:var(--navy);
-                    ">
-                        ${job.JobTitle}
-                    </h3>
-
-                    <div style="
-                        font-size:13px;
-                        color:var(--text-muted);
-                        margin-bottom:15px;
-                    ">
-                        <i class="fas fa-map-marker-alt"></i>
-                        ${job.LocationName}
-                    </div>
-
-                    <div style="
-                        color:var(--gold);
-                        font-weight:800;
-                        margin-bottom:20px;
-                    ">
-                        ${job.MinimumSalary || 'Competitive'}
-                    </div>
-
-                    <a
-                        href="${job.ApplyLink}"
-                        target="_blank"
-                        class="btn btn-navy w-100"
-                    >
-                        Apply Direct
-                    </a>
-
+            <div class="job-card">
+                <div class="flex-between mb-10">
+                    <span class="job-company">${job.EmployerName || 'Premium Employer'}</span>
+                    ${sourceBadge}
                 </div>
-            `;
+                <h3 class="job-title">${job.JobTitle}</h3>
+                <div class="text-sm text-muted"><i class="fas fa-map-marker-alt"></i> ${job.LocationName || 'UK Wide'}</div>
+                <div class="job-salary">${salary}</div>
+                <a href="${job.ApplyLink || '#'}" target="_blank" class="btn btn-navy w-100">Apply Direct <i class="fas fa-external-link-alt"></i></a>
+            </div>`;
         }
     });
 
-    if (count === 0) {
-
-        html = `
-            <p class="text-center w-100">
-                No jobs found in this category.
-            </p>
-        `;
+    container.innerHTML = count > 0 ? html : '<p class="text-center w-100">No jobs match this category right now.</p>';
+    if (countDisplay) {
+        countDisplay.innerHTML = `Showing <b>${count}</b> Verified UK Opportunities`;
     }
-
-    container.innerHTML = html;
-
-    document.getElementById('job-count-display').innerHTML =
-        `Showing ${count} Verified UK Opportunities`;
 }
