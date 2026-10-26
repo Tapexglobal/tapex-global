@@ -1,0 +1,33 @@
+{
+  "accessibility": [
+    {
+      "path": "/",
+      "violations": []
+    },
+    {
+      "path": "/uk",
+      "violations": []
+    },
+    {
+      "path": "/contact",
+      "violations": []
+    },
+    {
+      "path": "/privacy",
+      "violations": []
+    },
+    {
+      "path": "/contact (configured form with mocked security/delivery)",
+      "violations": []
+    }
+  ],
+  "interactions": [
+    "No optional tags or attribution before consent",
+    "Separate consent choices enable mocked tags and identifiers-only attribution",
+    "Native required validation prevents empty request",
+    "Delivery failure displays error and emits zero success conversions",
+    "Confirmed receipt emits exactly one success event; optional marketing remains false; analytics contains no enquiry fields",
+    "Withdrawal clears stored advertising attribution and reloads"
+  ],
+  "status": "passed"
+}
