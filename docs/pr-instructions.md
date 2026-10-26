@@ -8,15 +8,21 @@ Base: `main`
 
 Proposed title: **Transform TAPEX study-abroad website, enquiry safety and technical SEO**
 
-The authenticated account has `pull:true`, `push:false` according to the repository permissions API. No branch was pushed and no PR was created. The local feature branch and implementation are prepared for review. Do not push directly to `main`.
+Draft PR created: https://github.com/Tapexglobal/tapex-global/pull/3
 
-After an authorized account has write access, verify that publishing the branch will not trigger deployment: this branch has `git.deploymentEnabled: false` in `vercel.json`, but other hosting/Git integrations must also be checked. The task does not authorize a deployment. Then run from the repository:
+GitHub confirms the author is **VaraKare** (Vara kare), a human account (`is_bot:false`). The implementation commit is authored by the configured user identity, **Vara k**, with no Codex/ChatGPT co-author trailer.
+
+Upstream access remains `pull:true`, `push:false`. The branch was therefore pushed to the user's fork, https://github.com/VaraKare/tapex-global, and the PR opened from `VaraKare:feat/tapex-website-transformation` into upstream `main`. No upstream main push or merge occurred.
+
+The independent repository requested after the PR is https://github.com/VaraKare/tapex-global-site. It is private, is not a fork, and contains the same site/history on `feat/tapex-website-transformation`, its default branch. GitHub Pages is disabled.
+
+The branch has `git.deploymentEnabled: false` in `vercel.json`. No hosting or DNS setup was changed. Review the existing PR instead of creating a duplicate:
 
 ```sh
 rtk git status --short --branch
 rtk git log -1 --oneline
-rtk git push -u origin feat/tapex-website-transformation
-rtk proxy gh pr create --repo Tapexglobal/tapex-global --base main --head feat/tapex-website-transformation --draft --title 'Transform TAPEX study-abroad website, enquiry safety and technical SEO' --body-file docs/pr-summary.md
+rtk proxy gh pr view 3 --repo Tapexglobal/tapex-global
+rtk proxy gh pr checks 3 --repo Tapexglobal/tapex-global
 ```
 
-Use `docs/pr-summary.md` verbatim as the initial body and update it only for subsequent validated changes. The branch already contains a local implementation commit. Do not commit secrets or enable accounts while creating the PR. Request business/legal/content and engineering review for the documented decisions. Keep it draft until operational checks are complete; do not merge or deploy without explicit approval.
+`docs/pr-summary.md` supplies the PR body. Existing remotes are `origin` (upstream), `personal-fork` (PR source) and `personal-site` (independent repository). Push only reviewed feature-branch updates to the intended remote. Do not commit secrets or enable accounts. Request business/legal/content and engineering review for the documented decisions. Keep the PR draft until operational checks are complete; do not merge or deploy without explicit approval. See `docs/github-pages-readiness.md` before preview publication.

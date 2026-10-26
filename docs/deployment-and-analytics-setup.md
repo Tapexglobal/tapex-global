@@ -1,6 +1,6 @@
 # Local operation and approval-gated setup
 
-Nothing has been published, deployed, merged, sent to a CRM, or changed in DNS/production analytics. The feature branch is local. Current GitHub account has read permission and `push:false`; use the PR instructions after repository access is granted. Vercel Git deployments are disabled for this feature branch in tracked configuration as an additional precaution; do not assume it disables other integrations or manually triggered builds.
+No website has been deployed, merged, sent to a CRM, or changed in DNS/production analytics. On the user's subsequent instruction, the feature branch was pushed to their fork and draft [PR #3](https://github.com/Tapexglobal/tapex-global/pull/3) was created as **VaraKare**. A separate private [source repository](https://github.com/VaraKare/tapex-global-site) was then created in their account; Pages remains disabled. Upstream write access is still absent. Vercel Git deployments are disabled for this feature branch in tracked configuration as an additional precaution; do not assume it disables other integrations or manually triggered builds. See the updated PR handoff and GitHub Pages readiness notes.
 
 ## Run locally
 
