@@ -1,0 +1,79 @@
+[
+  {
+    "name": "idp",
+    "requestedURL": "https://www.idp.com/india/study-abroad-consultants/telangana/",
+    "status": 403,
+    "url": "https://www.idp.com/india/study-abroad-consultants/telangana/",
+    "title": "",
+    "h1": [],
+    "viewport": "width=device-width",
+    "overflow": false,
+    "schemaTypes": [],
+    "navButtons": []
+  },
+  {
+    "name": "aecc",
+    "requestedURL": "https://www.aeccglobal.com/in",
+    "status": 200,
+    "url": "https://www.aeccglobal.com/in",
+    "title": "Study Abroad Consultant, Get Free Counselling! | AECC - India",
+    "canonical": "https://www.aeccglobal.com/in",
+    "description": "Your expert Study Abroad Consultant for top destinations. Access 200,000+ courses from 1100+ institution partners. Get free overseas education guidance.",
+    "h1": [
+      "Meet Top Universities from Six Countries"
+    ],
+    "viewport": "width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes",
+    "overflow": false,
+    "schemaTypes": [
+      [
+        "VideoObject",
+        "VideoObject",
+        "VideoObject",
+        "VideoObject",
+        "VideoObject"
+      ]
+    ],
+    "navButtons": [
+      "Andhra Pradesh office locations",
+      "Delhi office locations",
+      "Gujarat office locations",
+      "Haryana office locations",
+      "Karnataka office locations",
+      "Kerala office locations",
+      "Maharashtra office locations",
+      "Punjab office locations"
+    ]
+  },
+  {
+    "name": "studyin",
+    "requestedURL": "https://gostudyin.com/india/",
+    "status": 403,
+    "url": "https://gostudyin.com/india/",
+    "title": "Attention Required! | Cloudflare",
+    "h1": [
+      "Sorry, you have been blocked"
+    ],
+    "viewport": "width=device-width,initial-scale=1",
+    "overflow": false,
+    "schemaTypes": [],
+    "navButtons": []
+  },
+  {
+    "name": "kc",
+    "requestedURL": "https://www.studies-overseas.com/",
+    "status": 200,
+    "url": "https://www.studies-overseas.com/",
+    "title": "KC Overseas Education - Best Study Abroad Consultants",
+    "canonical": "https://www.studies-overseas.com/",
+    "description": "KC Overseas Education is the best Study Abroad Consultant in India, helping students with Higher Education Abroad dreams\n",
+    "h1": [
+      "We are bringing overseas education within everyone’s reach"
+    ],
+    "viewport": "width=device-width",
+    "overflow": false,
+    "schemaTypes": [
+      "Organization"
+    ],
+    "navButtons": []
+  }
+]
